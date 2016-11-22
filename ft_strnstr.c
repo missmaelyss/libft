@@ -19,7 +19,7 @@ char	*ft_strnstr(char *meule_de_foin, char *aiguille, size_t i)
 	n = 0;
 	if (ft_strlen(aiguille) == 0)
 		return (meule_de_foin);
-	while (ft_strncmp(&meule_de_foin[n], aiguille, ft_strlen(aiguille) - 1)
+	while (ft_strncmp(&meule_de_foin[n], aiguille, ft_strlen(aiguille))
 			&& meule_de_foin[n] != 0 && n < i)
 		n++;
 	if ((meule_de_foin[n] == 0) || (n + ft_strlen(aiguille) > i))

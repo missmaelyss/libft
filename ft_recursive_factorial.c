@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marnaud <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 14:37:42 by marnaud           #+#    #+#             */
-/*   Updated: 2016/11/12 11:36:09 by marnaud          ###   ########.fr       */
+/*   Created: 2016/08/09 20:00:00 by marnaud           #+#    #+#             */
+/*   Updated: 2016/11/22 13:41:48 by marnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isalnum(int a)
+int	ft_recursive_factorial(int nb)
 {
-	if ((a >= 'A' && a <= 'Z') || (a >= 'a' && a <= 'z')
-			|| (a >= '0' && a <= '9'))
+	if ((nb < 0) || (nb >= 13))
+		return (0);
+	if (nb == 0)
 		return (1);
-	return (0);
+	if (nb > 1)
+	{
+		nb = nb * ft_recursive_factorial(nb - 1);
+	}
+	return (nb);
 }

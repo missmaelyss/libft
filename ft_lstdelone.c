@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marnaud <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 14:37:42 by marnaud           #+#    #+#             */
-/*   Updated: 2016/11/12 11:36:09 by marnaud          ###   ########.fr       */
+/*   Created: 2016/11/22 10:46:37 by marnaud           #+#    #+#             */
+/*   Updated: 2016/11/22 12:12:53 by marnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isalnum(int a)
+void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t))
 {
-	if ((a >= 'A' && a <= 'Z') || (a >= 'a' && a <= 'z')
-			|| (a >= '0' && a <= '9'))
-		return (1);
-	return (0);
+	del((*alst)->content, (*alst)->content_size);
+	free(*alst);
+	*alst = NULL;
 }

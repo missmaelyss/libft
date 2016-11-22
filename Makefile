@@ -6,7 +6,7 @@
 #    By: marnaud <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/12 10:45:06 by marnaud           #+#    #+#              #
-#    Updated: 2016/11/17 15:08:47 by marnaud          ###   ########.fr        #
+#    Updated: 2016/11/22 11:59:13 by marnaud          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,14 +63,15 @@ ft_memmove.c\
 ft_memccpy.c\
 ft_memcpy.c\
 ft_bzero.c\
-ft_memset.c
+ft_memset.c\
+ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c
 
 OBJECT	= $(SRC:%.c=%.o)
 
 all: $(NAME)
 
 $(NAME):
-	gcc -c -Wall -Wextra -Werror $(SRC) libft.h
+	gcc -c -Wall -Wextra -Werror $(SRC) 
 	ar rc $(NAME) $(OBJECT)
 
 clean:

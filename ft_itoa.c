@@ -6,40 +6,45 @@
 /*   By: marnaud <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 16:15:57 by marnaud           #+#    #+#             */
-/*   Updated: 2016/11/17 15:49:34 by marnaud          ###   ########.fr       */
+/*   Updated: 2016/11/18 13:29:23 by marnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-static int		size(int n)
+static	void	signe(int *n, int *len)
 {
-	int size;
-
-	if (n == 0)
-		return (1);
-	size = 0;
-	if (n < 0)
+	if (*n < 0)
 	{
-		size++;
-		n = -n;
+		*n = -*n;
+		*len += 1;
 	}
-	while (n % 10)
-	{
-		size++;
-		n = n / 10;
-	}
-	return (size);
 }
 
 char			*ft_itoa(int n)
 {
+	int		tmp;
+	int		len;
 	char	*str;
+	int		s;
 
-	if (!(str = (char *)malloc(sizeof(char) * (size(n) + 1))))
-		return (0);
-	ft_putnbr_fd(n, *str);
-	str[size(n)] = '\0';
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	len = 2;
+	s = (n >= 0) ? 0 : 1;
+	signe(&n, &len);
+	tmp = n;
+	while (tmp /= 10)
+		len++;
+	if ((str = (char*)malloc(sizeof(char) * len)) == NULL)
+		return (NULL);
+	str[--len] = '\0';
+	while (len--)
+	{
+		str[len] = n % 10 + '0';
+		n = n / 10;
+	}
+	if (s == 1)
+		str[0] = '-';
 	return (str);
 }

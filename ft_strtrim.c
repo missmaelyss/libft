@@ -6,22 +6,27 @@
 /*   By: marnaud <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 14:01:46 by marnaud           #+#    #+#             */
-/*   Updated: 2016/11/17 11:49:26 by marnaud          ###   ########.fr       */
+/*   Updated: 2016/11/18 16:22:40 by marnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		test_final(char const *s1)
+static int		len(char const *s1)
 {
-	int i;
+	int	len;
+	int n;
 
-	i = 0;
-	while (s1[i])
-		i++;
-	while ((s1[i - 1] == ' ') || (s1[i - 1] == '\t') || (s1[i - 1] == '\n'))
-		i--;
-	return (i);
+	n = 0;
+	while ((s1[n] == ' ') || (s1[n] == '\t') || (s1[n] == '\n'))
+		n++;
+	len = ft_strlen(s1);
+	while ((s1[len - 1] == ' ') || (s1[len - 1] == '\t')
+			|| (s1[len - 1] == '\n'))
+		len--;
+	if (len - n > 0)
+		return (len - n);
+	return (0);
 }
 
 char			*ft_strtrim(char const *s)
@@ -32,16 +37,18 @@ char			*ft_strtrim(char const *s)
 
 	i = 0;
 	istr = 0;
+	if (s == NULL)
+		return (NULL);
+	if (!(str = (char*)malloc(sizeof(char) * (len(s) + 1))))
+		return (NULL);
 	while ((s[i] == ' ') || (s[i] == '\t') || (s[i] == '\n'))
 		i++;
-	if (!(str = (char*)malloc(sizeof(char) * (test_final(s) - i - 1))))
-		return (0);
-	while (i < test_final(s))
+	while (istr < len(s))
 	{
-		str[istr] = s[i];
+		str[istr] = s[i + istr];
 		istr++;
-		i++;
 	}
 	str[istr] = 0;
+	i = len(s);
 	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: marnaud <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 14:27:28 by marnaud           #+#    #+#             */
-/*   Updated: 2016/11/15 12:01:23 by marnaud          ###   ########.fr       */
+/*   Updated: 2016/11/18 11:39:26 by marnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ char			**ft_strsplit(char const *s, char c)
 
 	n = 0;
 	i = 0;
+	if (s == NULL)
+		return (NULL);
 	value((char*)s, c, val);
 	if (!(tab = (char**)malloc(sizeof(char*) * (val[0] + 1))))
 		return (0);

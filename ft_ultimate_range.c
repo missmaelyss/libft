@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marnaud <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 14:37:42 by marnaud           #+#    #+#             */
-/*   Updated: 2016/11/12 11:36:09 by marnaud          ###   ########.fr       */
+/*   Created: 2016/08/23 15:05:39 by marnaud           #+#    #+#             */
+/*   Updated: 2016/11/22 13:44:01 by marnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isalnum(int a)
+int		ft_ultimate_range(int **range, int min, int max)
 {
-	if ((a >= 'A' && a <= 'Z') || (a >= 'a' && a <= 'z')
-			|| (a >= '0' && a <= '9'))
-		return (1);
-	return (0);
+	int		i;
+	int		*tab;
+
+	if (min >= max)
+		return (0);
+	i = 0;
+	tab = (int*)malloc(sizeof(int) * (max - min + 1));
+	while (min < max)
+	{
+		tab[i] = min;
+		min++;
+		i++;
+	}
+	tab[i] = '\0';
+	*range = tab;
+	return (i);
 }

@@ -6,20 +6,25 @@
 /*   By: marnaud <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 12:57:46 by marnaud           #+#    #+#             */
-/*   Updated: 2016/11/09 13:03:03 by marnaud          ###   ########.fr       */
+/*   Updated: 2016/11/18 11:43:36 by marnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	ft_strclr(char *s)
 {
 	int i;
 
 	i = 0;
-	while (s[i])
-		i++;
-	while (i >= 0)
+	if (s)
 	{
-		s[i] = 0;
-		i--;
+		while (s[i])
+			i++;
+		while (i >= 0)
+		{
+			s[i] = 0;
+			i--;
+		}
 	}
 }
