@@ -71,7 +71,7 @@ OBJECT	= $(SRC:%.c=%.o)
 all: $(NAME)
 
 $(NAME):
-	gcc -c -Wall -Wextra -Werror $(SRC) 
+	gcc -c -Wall -Wextra -Werror $(SRC)
 	ar rc $(NAME) $(OBJECT)
 
 clean:

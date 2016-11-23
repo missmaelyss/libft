@@ -6,13 +6,13 @@
 /*   By: marnaud <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 11:35:20 by marnaud           #+#    #+#             */
-/*   Updated: 2016/11/12 11:38:32 by marnaud          ###   ########.fr       */
+/*   Updated: 2016/11/23 10:13:22 by marnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(void *s, int c, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	int		i;
 	char	*src;
