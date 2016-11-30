@@ -1,87 +1,82 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsplit.c                                      :+:      :+:    :+:   */
+/*   ft_strsplit2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marnaud <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/09 14:27:28 by marnaud           #+#    #+#             */
-/*   Updated: 2016/11/18 11:39:26 by marnaud          ###   ########.fr       */
+/*   Created: 2016/11/24 15:09:34 by marnaud           #+#    #+#             */
+/*   Updated: 2016/11/24 16:44:35 by marnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void		value(char *s, char c, int val[2])
+static int		len_w(char const *s, char c, int i)
 {
-	int nb_w;
-	int n;
-	int max_len;
-	int len_w;
+	int len_word;
 
-	n = 0;
-	nb_w = 0;
-	max_len = 0;
-	while (s[n])
+	len_word = 0;
+	while (s[i] != c && s[i] != '\0')
 	{
-		len_w = 0;
-		while (s[n] == c)
-			n++;
-		if (s[n] != c && s[n] != 0)
-			nb_w++;
-		while (s[n] != c && s[n] != 0)
-		{
-			len_w++;
-			n++;
-		}
-		if (len_w > max_len)
-			max_len = len_w;
+		len_word++;
+		i++;
 	}
-	val[0] = nb_w;
-	val[1] = max_len;
+	return (len_word);
 }
 
-static char		*file(char const *s, char c, int *i)
+static int		nb_w(char const *s, char c)
 {
 	int		n;
-	char	*w;
+	int		nb_words;
 
-	if (!(w = (char*)malloc(sizeof(char) * 200)))
-		return (0);
-	while (s[*i] == c)
-		*i += 1;
 	n = 0;
-	while (s[*i] != c)
+	nb_words = 0;
+	while (s[n] != '\0')
 	{
-		w[n] = s[*i];
-		*i += 1;
+		if (s[n] != c && (s[n - 1] == c || n == 0))
+			nb_words++;
 		n++;
 	}
-	w[n] = 0;
-	return (w);
+	return (nb_words);
+}
+
+static	void	file(char const *s, char c, int *n_str, char *tab)
+{
+	int		n_word;
+
+	n_word = 0;
+	while (s[*n_str] != c && s[*n_str] != '\0')
+	{
+		tab[n_word] = s[*n_str];
+		n_word += 1;
+		*n_str += 1;
+	}
+	tab[n_word] = '\0';
 }
 
 char			**ft_strsplit(char const *s, char c)
 {
 	char	**tab;
-	int		val[2];
-	int		n;
-	int		i;
+	int		n_tab;
+	int		n_str;
 
-	n = 0;
-	i = 0;
-	if (s == NULL)
-		return (NULL);
-	value((char*)s, c, val);
-	if (!(tab = (char**)malloc(sizeof(char*) * (val[0] + 1))))
+	if (!s)
 		return (0);
-	while (n < val[0])
+	if (!(tab = (char **)malloc(sizeof(char *) * (nb_w(s, c) + 1))))
+		return (0);
+	n_tab = 0;
+	n_str = 0;
+	while (n_tab < nb_w(s, c))
 	{
-		if (!(tab[n] = (char*)malloc(sizeof(char) * (val[1] + 1))))
+		while (s[n_str] == c)
+			n_str++;
+		if (!(tab[n_tab] = (char *)malloc(sizeof(char) *
+						(len_w(s, c, n_str) + 1))))
 			return (0);
-		tab[n] = file(s, c, &i);
-		n++;
+		file(s, c, &n_str, tab[n_tab]);
+		n_tab++;
 	}
-	tab[n] = 0;
+	tab[n_tab] = 0;
 	return (tab);
 }
