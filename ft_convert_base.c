@@ -6,7 +6,7 @@
 /*   By: marnaud <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/24 23:28:35 by marnaud           #+#    #+#             */
-/*   Updated: 2016/11/22 14:24:01 by marnaud          ###   ########.fr       */
+/*   Updated: 2017/01/24 15:22:08 by marnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void		sous_fonction_nulle(int *m, int *pw, char *base_to)
 {
-	while (*m / ft_strlen(base_to) > 0)
+	while (*m / (int)ft_strlen(base_to) > 0)
 	{
-		*m = *m / (ft_strlen(base_to));
+		*m = *m / ((int)ft_strlen(base_to));
 		*pw += 1;
 	}
 }
@@ -42,7 +42,7 @@ static char		*ft_convert_nb_s(int nb, char *base_to)
 		m = nb;
 		n += 1;
 		pw -= 1;
-		while (m >= (ft_strlen(base_to)))
+		while (m >= ((int)ft_strlen(base_to)))
 			m = m / (ft_strlen(base_to));
 	}
 	nbr[n] = 0;

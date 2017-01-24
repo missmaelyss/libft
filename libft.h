@@ -6,7 +6,7 @@
 /*   By: marnaud <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 10:02:11 by marnaud           #+#    #+#             */
-/*   Updated: 2016/11/23 15:17:57 by marnaud          ###   ########.fr       */
+/*   Updated: 2017/01/24 18:28:17 by marnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+int					get_next_line(int fd, char **line);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 char				*ft_strtrim(char const *s);

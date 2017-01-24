@@ -6,13 +6,19 @@
 #    By: marnaud <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/12 10:45:06 by marnaud           #+#    #+#              #
-#    Updated: 2016/11/24 16:44:03 by marnaud          ###   ########.fr        #
+#    Updated: 2017/01/24 18:24:11 by marnaud          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-SRC = ft_toupper.c\
+SRC = get_next_line.c\
+ft_recursive_factorial.c\
+ft_recursive_power.c\
+ft_find_next_prime.c\
+ft_ultimate_range.c\
+ft_convert_base.c\
+ft_toupper.c\
 ft_tolower.c\
 ft_strtrim.c\
 ft_strsub.c\

@@ -6,7 +6,7 @@
 /*   By: marnaud <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 14:10:07 by marnaud           #+#    #+#             */
-/*   Updated: 2016/11/23 10:09:49 by marnaud          ###   ########.fr       */
+/*   Updated: 2017/01/24 14:08:27 by marnaud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ int		ft_atoi(const char *str)
 	n = 0;
 	s = 1;
 	sto = 0;
-	while (str[n] == ' ' || str[n] == '\t' || str[n] == '\n'
-			|| str[n] == '\v' || str[n] == '\f' || str[n] == '\r')
+	while (str && (str[n] == ' ' || str[n] == '\t' || str[n] == '\n'
+			|| str[n] == '\v' || str[n] == '\f' || str[n] == '\r'))
 		n++;
-	if (str[n] == '-')
+	if (str && str[n] == '-')
 	{
 		s = -1;
 		n++;
 	}
-	if (str[n] == '+' && s == 1)
+	if (str && str[n] == '+' && s == 1)
 		n++;
-	while (str[n] >= '0' && str[n] <= '9')
+	while (str && str[n] >= '0' && str[n] <= '9')
 	{
 		sto = sto * 10;
 		sto = sto + str[n] - 48;
